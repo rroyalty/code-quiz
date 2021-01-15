@@ -3,40 +3,45 @@
 
 $(document).ready(function() {
 
-  console.log(quizQuestions);
-
   // Initial Variables
-  var computerPick = Math.floor(Math.random() * 4) + 1;
-  var lockGame = false;
-
-  // We log the computer's pick to console to make it easier to troubleshoot
-  console.log("Computer Pick: " + computerPick);
+  let lockGame = false;
+  let fluidQuestions = quizQuestions;
 
   // Here we create the on click event that gets the user"s pick
   $(".btn-choice").on("click", function() {
 
-    // Here this lockGame line prevents the user from changing the option after the game is done.
-    if (lockGame !== true) {
+    let questionsLeft = fluidQuestions.questions.length;
+    let randomQNum =  Math.floor(Math.random() * questionsLeft);
 
-      // We get the value associated with the button the user picked from here
-      var yourPick = $(this).val();
-      console.log("Your Pick: " + yourPick);
+    $("#quizQuestion").text(fluidQuestions.questions[randomQNum].question);
 
-      // We then reveal the computer's pick in the html
-      $("#computer-pick").text(computerPick);
+    console.log(questionsLeft);
+    console.log(randomQNum);
+    console.log(fluidQuestions.questions[randomQNum].question);
 
-      // If your pick matched the computer's pick you let them know.
-      if (parseInt(yourPick) === computerPick) {
-        $("#result").text("Yep! You got it! Refresh the page to play again.");
-        lockGame = true;
-      }
+    fluidQuestions.questions.question.splice(randomQNum);
 
-      // If the numbers did not match. You also let them know
-      else {
-        $("#result").text("Nope. Refresh the page to play again.");
-        lockGame = true;
-      }
-    }
+    console.log(fluidQuestions);
+    console.log(fluidQuestions.questions.length);
+
+    // // We get the value associated with the button the user picked from here
+    // var yourPick = $(this).val();
+
+
+    // // We then reveal the computer's pick in the html
+
+    // // If your pick matched the computer's pick you let them know.
+    // if (parseInt(yourPick) === computerPick) {
+    //   $("#result").text("Yep! You got it! Refresh the page to play again.");
+    //   lockGame = true;
+    // }
+
+    // // If the numbers did not match. You also let them know
+    // else {
+    //   $("#result").text("Nope. Refresh the page to play again.");
+    //   lockGame = true;
+    // }
+    
 
   });
 });
