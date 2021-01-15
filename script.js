@@ -4,25 +4,23 @@
 $(document).ready(function() {
 
   // Initial Variables
-  let lockGame = false;
   let fluidQuestions = quizQuestions;
+  const randomizerArr = [0, 1, 2, 3]
 
   // Here we create the on click event that gets the user"s pick
   $(".btn-choice").on("click", function() {
 
+    let yourPick = $(this).val();
     let questionsLeft = fluidQuestions.questions.length;
     let randomQNum =  Math.floor(Math.random() * questionsLeft);
+    let buttonArray = $(".btn-choice");
+    let answerArray = $(".")
+
+    console.log(buttonArray);
 
     $("#quizQuestion").text(fluidQuestions.questions[randomQNum].question);
 
-    console.log(questionsLeft);
-    console.log(randomQNum);
-    console.log(fluidQuestions.questions[randomQNum].question);
-
-    fluidQuestions.questions.question.splice(randomQNum);
-
-    console.log(fluidQuestions);
-    console.log(fluidQuestions.questions.length);
+    fluidQuestions.questions.splice(randomQNum, 1);
 
     // // We get the value associated with the button the user picked from here
     // var yourPick = $(this).val();
