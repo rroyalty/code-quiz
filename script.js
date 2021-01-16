@@ -21,7 +21,8 @@ $(document).ready(function() {
     let elapsedArray = [].slice.call (elapsedCollection);
 
     if (highScores) {
-      for(let i = 0; i < 10; i++) {
+      let hsLength = highScores.entries.length;
+      for(let i = 0; i < hsLength; i++) {
         playerArray[i].innerText = highScores.entries[i].player;
         correctArray[i].innerText = highScores.entries[i].correct;
         incorrectArray[i].innerText = highScores.entries[i].incorrect;
