@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
   $("#stage2").attr("hidden", true);
   $("#stage3").attr("hidden", true);
@@ -8,7 +7,7 @@ $(document).ready(function() {
   let fluidQuestions = quizQuestions;
   let highScores = new Array(9999);
   let correctCount = 0;
-  let timerDisplay = 0;
+  let timer = setTimeout(function(){}, 0);
 
   //Begins the game
   $(".btn-begin").on("click", function() {
@@ -16,8 +15,10 @@ $(document).ready(function() {
     $("#stage1").attr("hidden", true);
     $("#stage2").attr("hidden", false);
 
+    // adjustTimer(6000, 0);
+
     fluidQuestions = randomizeButtons(fluidQuestions);
-    
+
   });
 
   // Creates the on click event and executes on Answer Click function.
@@ -27,12 +28,14 @@ $(document).ready(function() {
     const yourPick = parseInt($(this).val());
 
     //Checks to see if the answer clicked was the correct one.
-
+    let lockThis = this;
     if (yourPick === 0) {
-        $(this).addClass("correct");
+        $(lockThis).addClass("correct");
         correctCount++;
+        // adjustTimer(3);
       } else {
-        $(this).addClass("incorrect");
+        $(lockThis).addClass("incorrect");
+        // adjustTimer(-5);
     };
     
     //Delays for a moment to show correct/incorrect formatting.
@@ -42,16 +45,16 @@ $(document).ready(function() {
 
       // Resets Correct/Incorrect
       if (yourPick === 0) {
-        $(this).removeClass("correct");
+        $(lockThis).removeClass("correct");
         } else {
-          $(this).removeClass("incorrect");
+          $(lockThis).removeClass("incorrect");
       };
     }, 100);
   });
 });
 
 
-// An array of the unused questions is passed in to this function, which then selects a random question from that array,splices it out so it won't be seen again, and randomizes the order of the answers seen on screen.
+// An array of the unused questions is passed in to this function, which then selects a random question from that array,splices it out so it won't be seen again, and randomizes the order of the answers seen on screen
 function randomizeButtons(questionsArr) {
 
   // Function variables
@@ -85,5 +88,14 @@ function randomizeButtons(questionsArr) {
 
     return questionsArr;
 };
+
+// function adjustTimer(set, adjust){
+//   let adjustment = set + adjust;
+//   if(typeof timer !== 'undefined') {
+//     clearTimeout(timer);
+//     let timer = setTimeout(function(){
+//       alert("GameOver!");
+//     }, set + adjust * 100)};
+// }
 
 //location.reload()
