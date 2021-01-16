@@ -5,16 +5,17 @@ $(document).ready(function() {
   $("#stage1").attr("hidden", false);
 
   // Initial Variables
+  let fluidQuestions = quizQuestions;
   let highScores = new Array(9999);
   let correctCount = 0;
+  let timerDisplay = 0;
 
   //Begins the game
   $(".btn-begin").on("click", function() {
 
     $("#stage1").attr("hidden", true);
     $("#stage2").attr("hidden", false);
-    
-    let fluidQuestions = quizQuestions;
+
     fluidQuestions = randomizeButtons(fluidQuestions);
     
   });
@@ -26,11 +27,12 @@ $(document).ready(function() {
     const yourPick = parseInt($(this).val());
 
     //Checks to see if the answer clicked was the correct one.
-    let lockThis = this;
+
     if (yourPick === 0) {
-        $(lockThis).addClass("correct");
+        $(this).addClass("correct");
+        correctCount++;
       } else {
-        $(lockThis).addClass("incorrect");
+        $(this).addClass("incorrect");
     };
     
     //Delays for a moment to show correct/incorrect formatting.
@@ -40,17 +42,40 @@ $(document).ready(function() {
 
       // Resets Correct/Incorrect
       if (yourPick === 0) {
-        $(lockThis).removeClass("correct");
+        $(this).removeClass("correct");
         } else {
-          $(lockThis).removeClass("incorrect");
+          $(this).removeClass("incorrect");
       };
     }, 100);
   });
 });
 
+
+// An array of the unused questions is passed in to this function, which then selects a random question from that array,splices it out so it won't be seen again, and randomizes the order of the answers seen on screen.
 function randomizeButtons(questionsArr) {
+
+  // Function variables
+  let questionsLeft = questionsArr.questions.length;
+  let randomQNum =  Math.floor(Math.random() * questionsLeft);
   let arrLoc = [0, 1, 2, 3];
   let arrNum = [0, 1, 2, 3];
+  let buttonCollection = $(".btn-choice");
+  let answerCollection = $(".answerChoice");
+    // Turn the collections into Arrays.
+    let buttonArray = [].slice.call (buttonCollection);
+    let answerArray = [].slice.call (answerCollection);
+
+  // Sets the next question and removes the current Question from the array.
+  $("#quizQuestion").text(questionsArr.questions[randomQNum].question);
+  buttonArray.forEach(function(elem, i) {
+    $(elem).val(parseInt(arrLoc[i]));
+    $(answerArray[i]).text(questionsArr.questions[randomQNum].answers[arrLoc[i]]);
+    console.log(questionsArr.questions[randomQNum].answers[arrLoc[i]]);
+  });
+
+  questionsArr.questions.splice(randomQNum, 1);
+
+  // Randomizes the order of arrLoc in order to randomize the order of the buttons on the screen.
   arrLoc.forEach(function(elem, i, arr) {
     let Length = arrNum.length;
     let rand = Math.floor(Math.random() * Length);
@@ -58,32 +83,7 @@ function randomizeButtons(questionsArr) {
     arrNum.splice((rand), 1);
   }, arrNum);
 
-  // Console Log Stuff
-    // console.log(arrLoc);
-
-  // More Variables
-  let questionsLeft = questionsArr.questions.length;
-  let randomQNum =  Math.floor(Math.random() * questionsLeft);
-  let buttonCollection = $(".btn-choice");
-  let answerCollection = $(".answerChoice");
-
-  // Turn the collections into Arrays.
-  let buttonArray = [].slice.call (buttonCollection);
-  let answerArray = [].slice.call (answerCollection);
-
-  // Console Log Stuff
-    // console.log(buttonArray);
-    // console.log(answerArray);
-
-  // Sets the next question and removes the current Question from the array.
-  $("#quizQuestion").text(questionsArr.questions[randomQNum].question);
-    buttonArray.forEach(function(elem, i) {
-      $(elem).val(parseInt(arrLoc[i]));
-      $(answerArray[i]).text(questionsArr.questions[randomQNum].answers[arrLoc[i]]);
-      console.log(questionsArr.questions[randomQNum].answers[arrLoc[i]]);
-    });
-
-    questionsArr.questions.splice(randomQNum, 1);
-
     return questionsArr;
 };
+
+//location.reload()
