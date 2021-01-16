@@ -5,9 +5,10 @@ $(document).ready(function() {
 
   // Initial Variables
   let fluidQuestions = quizQuestions;
-  let highScores = new Array(9999);
+  let highScores = JSON.parse(localStorage.getItem("highScores"));
   let correctCount = 0;
   let incorrectCount = 0;
+  let timeElapsed = 0;
   let timer = 0;
 
   //Begins the game
@@ -37,6 +38,7 @@ $(document).ready(function() {
 
       } else {
         $(lockThis).addClass("incorrect");
+        incorrectCount++;
         timerAdjust(-5);
     };
     
@@ -60,6 +62,7 @@ $(document).ready(function() {
         clearInterval(interval);
         gameOver();
       } else {
+          timeElapsed++;
           timerAdjust (-1);
         }
     }, 1000);
@@ -84,6 +87,19 @@ $(document).ready(function() {
   function gameOver() {
     $("#stage2").attr("hidden", true);
     $("#stage3").attr("hidden", false);
+
+    if(!highScores) {
+      highScores = {entries: [{player: "",correct: "",incorrect: "",elapsed: ""}]};
+      highScores.entries[0].player = "Ryan Royalty";
+      highScores.entries[0].correct = correctCount;
+      highScores.entries[0].incorrect = incorrectCount;
+      highScores.entries[0].elapsed = timeElapsed;
+    } else {
+      highScores['entries'].push({"player":"Ryan Royalty","correct":correctCount,"incorrect":incorrectCount,"elapsed":timeElapsed});
+    }
+
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+
   };
 
   // An array of the unused questions is passed in to this function, which then selects a random question from that array,splices it out so it won't be seen again, and randomizes the order of the answers seen on screen
