@@ -7,6 +7,7 @@ $(document).ready(function() {
   // Initial Variables
   let fluidQuestions = quizQuestions;
   let highScores = new Array(9999);
+  let correctCount = 0;
 
   // Creates the on click event and executes on Answer Click function.
   $(".btn-choice").on("click", function() {
