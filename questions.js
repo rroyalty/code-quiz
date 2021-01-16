@@ -57,11 +57,8 @@ const quizQuestions =
             answers: ["Some Good News", "The Silver Lining", "It Ain't All Bad", "Feel Good News"],
         },
         {                
-            question: "What is the name of the news series John Krasinski launched during the coronavirus pandemic?", 
-            answers: ["Some Good News", "The Silver Lining", "It Ain't All Bad", "Feel Good News"],
+            question: "Which tech entrepreneur named his son X Æ A-12?", 
+            answers: ["Elon Musk", "Bill Gates", "Jeff Bezos", "Mark Zuckerberg"],
         },
-
-
-
     ]
 };
