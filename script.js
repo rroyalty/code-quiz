@@ -11,6 +11,8 @@ $(document).ready(function() {
   // Creates the on click event and executes on Answer Click function.
   $(".btn-choice").on("click", function() {
 
+    $("#stage1").attr("hidden", true);
+    $("#stage2").attr("hidden", false);
     //Defines clicked button.
     const yourPick = parseInt($(this).val());
 
@@ -56,7 +58,10 @@ $(document).ready(function() {
         buttonArray.forEach(function(elem, i) {
           $(elem).val(parseInt(arrLoc[i]));
           $(answerArray[i]).text(fluidQuestions.questions[randomQNum].answers[arrLoc[i]]);
+          console.log(fluidQuestions.questions[randomQNum].answers[arrLoc[i]]);
         });
+
+
 
       fluidQuestions.questions.splice(randomQNum, 1);
 
