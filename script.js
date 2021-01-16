@@ -13,7 +13,7 @@ $(document).ready(function() {
   //Begins the game
   $(".btn-begin").on("click", function() {
 
-    timerAdjust(60);
+    timerAdjust(30);
     gameTimer();
 
     $("#stage1").attr("hidden", true);

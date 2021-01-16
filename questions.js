@@ -21,8 +21,47 @@ const quizQuestions =
             answers: ["Val Kilmer", "Billy Crudup", "Jared Leto", "Henry Cavill"],
         },
         {                
-            question: "Who directed Vertigo?", 
+            question: "Who directed the 1958 movie Vertigo?", 
             answers: ["Alfred Hitchcock", "Orson Welles", "Frank Capra", "Fritz Lang"],
         },
+        {                
+            question: "Which of the following is NOT the name of a child of Kim Kardashian and Kanye West?", 
+            answers: ["Reno", "Chicago", "Psalm", "Saint"],
+        },
+        {                
+            question: "Which movie won the first official Best Picture Academy Award?", 
+            answers: ["Wings", "The Jazz Singer", "Sunrise", "The Last Command"],
+        },
+        {                
+            question: "What modern-day item made a cameo in the final season of Game of Thrones?", 
+            answers: ["A Starbucks Cup", "A Camera", "A Can of Coca-Cola", "A pair of Nikes"],
+        },
+        {                
+            question: "What is Chandler Bing’s middle name?", 
+            answers: ["Muriel", "Madonna", "Mimsy", "Monica"],
+        },
+        {                
+            question: "What are the names of the Sanderson sisters from Hocus Pocus?", 
+            answers: ["Winifred, Mary and Sarah", "Winifred, Mary and Nancy", "Nancy, Mary and Sarah", "Winifred, Nancy and Sarah"],
+        },
+        {                
+            question: "What is Rihanna’s real name?", 
+            answers: ["Robyn Fenty", "Robin Fenty", "Robyn Alleyne", "Robin Alleyne"],
+        },
+        {                
+            question: "What is Kramer’s first name on Seinfeld?", 
+            answers: ["Cosmo", "Astro", "Sol", "Meteor"],
+        },
+        {                
+            question: "What is the name of the news series John Krasinski launched during the coronavirus pandemic?", 
+            answers: ["Some Good News", "The Silver Lining", "It Ain't All Bad", "Feel Good News"],
+        },
+        {                
+            question: "What is the name of the news series John Krasinski launched during the coronavirus pandemic?", 
+            answers: ["Some Good News", "The Silver Lining", "It Ain't All Bad", "Feel Good News"],
+        },
+
+
+
     ]
 };
