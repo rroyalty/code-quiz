@@ -6,14 +6,15 @@
     background-color: red !important;
 }
 
-.displayNone{
-    visibility: hidden;
-}
-
 .font-red {
     color: red !important;
 }
 
 .font-green {
     color: green !important;
+}
+
+.timer-warning {
+    color: red !important;
+    font-size: 60px !important;
 }
