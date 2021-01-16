@@ -7,7 +7,6 @@ $(document).ready(function() {
   let fluidQuestions = quizQuestions;
   let highScores = new Array(9999);
   let correctCount = 0;
-  let timer = setTimeout(function(){}, 0);
 
   //Begins the game
   $(".btn-begin").on("click", function() {
@@ -15,10 +14,7 @@ $(document).ready(function() {
     $("#stage1").attr("hidden", true);
     $("#stage2").attr("hidden", false);
 
-    // adjustTimer(6000, 0);
-
     fluidQuestions = randomizeButtons(fluidQuestions);
-
   });
 
   // Creates the on click event and executes on Answer Click function.
@@ -32,10 +28,9 @@ $(document).ready(function() {
     if (yourPick === 0) {
         $(lockThis).addClass("correct");
         correctCount++;
-        // adjustTimer(3);
+
       } else {
         $(lockThis).addClass("incorrect");
-        // adjustTimer(-5);
     };
     
     //Delays for a moment to show correct/incorrect formatting.
@@ -89,13 +84,7 @@ function randomizeButtons(questionsArr) {
     return questionsArr;
 };
 
-// function adjustTimer(set, adjust){
-//   let adjustment = set + adjust;
-//   if(typeof timer !== 'undefined') {
-//     clearTimeout(timer);
-//     let timer = setTimeout(function(){
-//       alert("GameOver!");
-//     }, set + adjust * 100)};
-// }
-
-//location.reload()
+function gameOver() {
+  $("#stage2").attr("hidden", true);
+  $("#stage1").attr("hidden", false);
+};
