@@ -20,14 +20,14 @@ $(document).ready(function() {
     let incorrectArray = [].slice.call (incorrectCollection);
     let elapsedArray = [].slice.call (elapsedCollection);
 
-  for(let i = 0; i < 10; i++) {
     if (highScores) {
-      playerArray[i].innerText = highScores.entries[i].player;
-      correctArray[i].innerText = highScores.entries[i].correct;
-      incorrectArray[i].innerText = highScores.entries[i].incorrect;
-      elapsedArray[i].innerText = highScores.entries[i].elapsed;
+      for(let i = 0; i < 10; i++) {
+        playerArray[i].innerText = highScores.entries[i].player;
+        correctArray[i].innerText = highScores.entries[i].correct;
+        incorrectArray[i].innerText = highScores.entries[i].incorrect;
+        elapsedArray[i].innerText = highScores.entries[i].elapsed;
+      }
     }
-  }
   // Begins the game
   $(".btn-begin").on("click", function() {
 
