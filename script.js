@@ -10,7 +10,24 @@ $(document).ready(function() {
   let incorrectCount = 0;
   let timeElapsed = 0;
   let timer = 0;
+  let playerCollection = $(".playerList");
+  let correctCollection = $(".correctGuesses");
+  let incorrectCollection = $(".incorrectGuesses");
+  let elapsedCollection = $(".timeElapsed");
+    // Turn the collections into Arrays.
+    let playerArray = [].slice.call (playerCollection);
+    let correctArray = [].slice.call (correctCollection);
+    let incorrectArray = [].slice.call (incorrectCollection);
+    let elapsedArray = [].slice.call (elapsedCollection);
 
+  for(let i = 0; i < 10; i++) {
+    if (highScores.entries[i]) {
+      playerArray[i].innerText = highScores.entries[i].player;
+      correctArray[i].innerText = highScores.entries[i].correct;
+      incorrectArray[i].innerText = highScores.entries[i].incorrect;
+      elapsedArray[i].innerText = highScores.entries[i].elapsed;
+    }
+  }
   // Begins the game
   $(".btn-begin").on("click", function() {
 
