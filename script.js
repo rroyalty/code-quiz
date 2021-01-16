@@ -7,6 +7,7 @@ $(document).ready(function() {
   let fluidQuestions = quizQuestions;
   let highScores = new Array(9999);
   let correctCount = 0;
+  let timer = 60;
 
   //Begins the game
   $(".btn-begin").on("click", function() {
@@ -46,10 +47,8 @@ $(document).ready(function() {
       };
     }, 100);
   });
-});
 
-
-// An array of the unused questions is passed in to this function, which then selects a random question from that array,splices it out so it won't be seen again, and randomizes the order of the answers seen on screen
+  // An array of the unused questions is passed in to this function, which then selects a random question from that array,splices it out so it won't be seen again, and randomizes the order of the answers seen on screen
 function randomizeButtons(questionsArr) {
 
   // Function variables
@@ -88,3 +87,7 @@ function gameOver() {
   $("#stage2").attr("hidden", true);
   $("#stage1").attr("hidden", false);
 };
+
+});
+
+
