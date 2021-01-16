@@ -173,6 +173,13 @@ $(document).ready(function() {
 
   };
 
+  $(".btn-again").on("click", function() {
+   // Hides opening screen and shows quiz screen.
+    $("#stage2").attr("hidden", true);
+    $("#stage1").attr("hidden", false);
+    location.reload();
+  });
+
   // An array of the unused questions is passed in to this function, which then selects a random question from that array,splices it out so it won't be seen again, and randomizes the order of the answers seen on screen
   function randomizeButtons(questionsArr) {
 
