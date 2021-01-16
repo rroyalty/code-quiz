@@ -120,31 +120,32 @@ $(document).ready(function() {
       // If highscore present, push new score into JSON object. Sorts by Correct Answers, then Incorrect Answers, then Time Elapsed.
     } else {
         for (let i = 0; i < 10; i++) {
-          let wCorrect = parseInt(highScores.entries[i].correctCount);
-          let wIncorrect = parseInt(highScores.entries[i].incorrectCount);
-          let wElapsed = parseInt(highScores.entries[i].timeElapsed);
+          if ( !highScores.entries[i] ) {
+            let player1 = prompt("Please input your name to record highscore:");
+            if (player1 != null) {
+              highScores['entries'].push({"player":player1,"correct":correctCount,"incorrect":incorrectCount,"elapsed":timeElapsed});
+            }
+            i = 11;
+          } else {
+              let wCorrect = parseInt(highScores.entries[i].correct);
+              let wIncorrect = parseInt(highScores.entries[i].incorrect);
+              let wElapsed = parseInt(highScores.entries[i].elapsed);
 
-          switch(true) {
-            case !highScores.entries[i] === true:
-              let player1 = prompt("Please input your name to record highscore:");
-              if (player1 != null) {
-                highScores['entries'].push({"player":player1,"correct":correctCount,"incorrect":incorrectCount,"elapsed":timeElapsed});
+              switch(true) {
+                case wCorrect > parseInt(correctCount):
+                  break;
+                case wCorrect === parseInt(correctCount) && wIncorrect < parseInt(incorrectCount):
+                  break;
+                case wCorrect === parseInt(correctCount) && wIncorrect === parseInt(incorrectCount) && wElapsed < parseInt(timeElapsed):
+                  break;
+                default:
+                  let player2 = prompt("Please input your name to record highscore:");
+                  if (player2 != null) {
+                    highScores['entries'].splice(i, 0, {"player":player2,"correct":correctCount,"incorrect":incorrectCount,"elapsed":timeElapsed});
+                  }
+                  i = 11;
               }
-              i = 11;
-              break;
-            case wCorrect > parseInt(correctCount):
-              break;
-            case wCorrect === parseInt(correctCount) && wIncorrect < parseInt(incorrectCount):
-              break;
-            case wCorrect === parseInt(correctCount) && wIncorrect === parseInt(incorrectCount) && wElapsed < parseInt(timeElapsed):
-              break;
-            default:
-              let player2 = prompt("Please input your name to record highscore:");
-              if (player2 != null) {
-                highScores['entries'].splice(i + 1, 0, {"player":player2,"correct":correctCount,"incorrect":incorrectCount,"elapsed":timeElapsed});
-              }
-              i = 11;
-          }
+            }
         }
       }
 
@@ -186,8 +187,6 @@ $(document).ready(function() {
     });
 
     questionsArr.questions.splice(randomQNum, 1);
-
-      console.log(arrLoc);
       return questionsArr;
   };
 
