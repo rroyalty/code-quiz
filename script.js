@@ -18,25 +18,30 @@ $(document).ready(function() {
       arrNum.splice((rand), 1);
     }, arrNum);
 
-    console.log(arrLoc);
+    // console.log(arrLoc);
 
     let yourPick = $(this).val();
     let questionsLeft = fluidQuestions.questions.length;
     let randomQNum =  Math.floor(Math.random() * questionsLeft);
-    let buttonArray = $(".btn-choice");
-    let answerArray = $(".answerChoice");
+    let buttonCollection = $(".btn-choice");
+    let answerCollection = $(".answerChoice");
 
+    // console.log(buttonCollection);
+    // console.log(answerCollection);
+
+    let buttonArray = [].slice.call (buttonCollection);
+    let answerArray = [].slice.call (answerCollection);
     console.log(buttonArray);
     console.log(answerArray);
 
     $("#quizQuestion").text(fluidQuestions.questions[randomQNum].question);
     buttonArray.forEach(function(elem, i) {
-      elem.val(arrLoc[i]);
-      
+      $(elem).val(parseInt(arrLoc[i]));
+      $(answerArray[i]).text(fluidQuestions.questions[randomQNum].answers[arrLoc[i]]);
     });
 
     fluidQuestions.questions.splice(randomQNum, 1);
-
+    
     // // We get the value associated with the button the user picked from here
     // var yourPick = $(this).val();
 
