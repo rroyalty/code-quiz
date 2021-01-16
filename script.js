@@ -1,7 +1,12 @@
 
 $(document).ready(function() {
+  $("#stage1").attr("hidden", false);
+  $("#stage2").attr("hidden", true);
+  $("#stage3").attr("hidden", true);
+  
   // Initial Variables
   let fluidQuestions = quizQuestions;
+  let highScores = new Array(9999);
 
   // Creates the on click event and executes on Answer Click function.
   $(".btn-choice").on("click", function() {
@@ -10,7 +15,6 @@ $(document).ready(function() {
     const yourPick = parseInt($(this).val());
 
     //Checks to see if the answer clicked was the correct one.
-
     let lockThis = this;
     if (yourPick === 0) {
         $(lockThis).addClass("correct");
@@ -18,6 +22,7 @@ $(document).ready(function() {
         $(lockThis).addClass("incorrect");
     };
     
+    //Delays for a moment to show correct/incorrect formatting.
     setTimeout(function(){
       //Randomizes the order of the Answer buttons.
       let arrLoc = [0, 1, 2, 3];

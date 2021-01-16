@@ -15,17 +15,18 @@
     <div class="jumbotron">
       <h1 class="text-center">Code Quiz!</h1>
       <h3 class="text-center">Incorrect answers will deduct time!</h3>
+      <h3 class="displayNone">_</h3>
     </div>
   
-    <div class="container">
-  
+
+    <!--Stage 1-->
+    <div id="stage1" class="container">
+
       <div class="row">
         <div class="col-md-12">
           <div class="card mb-2">
-            <h3 class="card-header">Question:</h3>
-            <div class="card-body text-center">
-              <h1 id="quizQuestion"></h1>
-            </div>
+            <h3 class="card-header text-center">High Scores!</h3>
+
           </div>
         </div>
       </div>
@@ -50,6 +51,57 @@
               <button class="btn btn-secondary btn-choice col-6" value="4">
                 <h1 class="answerChoice"></h1>
               </button>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card mb-2">
+            <h3 class="card-header">Result</h3>
+            <div class="card-body text-center">
+              <h1 id="result"></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+
+    <!--Stage 2-->
+    <div id="stage2" class="container">
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card mb-2">
+            <h3 class="card-header">Question:</h3>
+            <div class="card-body text-center">
+              <h1 id="quizQuestion"></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card mb-2">
+            <h3 class="card-header">Select an Answer:</h3>
+            <div class="card-body text-center">
+              <div class="row">
+                <button class="btn btn-secondary btn-choice col-sm-6 col-12" value="1">
+                  <h1 class="answerChoice"></h1>
+                </button>
+                <button class="btn btn-secondary btn-choice col-sm-6 col-12" value="2">
+                  <h1 class="answerChoice"></h1>
+                </button>
+                <button class="btn btn-secondary btn-choice col-sm-6 col-12" value="3">
+                  <h1 class="answerChoice"></h1>
+                </button>
+                <button class="btn btn-secondary btn-choice col-sm-6 col-12" value="4">
+                  <h1 class="answerChoice"></h1>
+                </button>
             </div>
             </div>
           </div>
