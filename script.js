@@ -9,6 +9,17 @@ $(document).ready(function() {
   // Here we create the on click event that gets the user"s pick
   $(".btn-choice").on("click", function() {
 
+    
+    const yourPick = $(this).val();
+    const answer = parseInt(yourPick);
+
+    if (answer === 0) {
+        $(this).addClass("correct");
+    } else {
+        $(this).addClass("incorrect");
+    };
+
+    //Randomizes the order of the Answer buttons.
     let arrLoc = [0, 1, 2, 3];
     let arrNum = [0, 1, 2, 3];
     arrLoc.forEach(function(elem, i, arr) {
@@ -20,7 +31,6 @@ $(document).ready(function() {
 
     // console.log(arrLoc);
 
-    let yourPick = $(this).val();
     let questionsLeft = fluidQuestions.questions.length;
     let randomQNum =  Math.floor(Math.random() * questionsLeft);
     let buttonCollection = $(".btn-choice");
@@ -31,8 +41,9 @@ $(document).ready(function() {
 
     let buttonArray = [].slice.call (buttonCollection);
     let answerArray = [].slice.call (answerCollection);
-    console.log(buttonArray);
-    console.log(answerArray);
+
+    // console.log(buttonArray);
+    // console.log(answerArray);
 
     $("#quizQuestion").text(fluidQuestions.questions[randomQNum].question);
     buttonArray.forEach(function(elem, i) {
@@ -41,41 +52,13 @@ $(document).ready(function() {
     });
 
     fluidQuestions.questions.splice(randomQNum, 1);
+
+    if (answer === parseInt(0)) {
+      $(this).removeClass("correct");
+      } else {
+        $(this).removeClass("incorrect");
+    };
     
-    // // We get the value associated with the button the user picked from here
-    // var yourPick = $(this).val();
-
-
-    // // We then reveal the computer's pick in the html
-
-    // // If your pick matched the computer's pick you let them know.
-    // if (parseInt(yourPick) === computerPick) {
-    //   $("#result").text("Yep! You got it! Refresh the page to play again.");
-    //   lockGame = true;
-    // }
-
-    // // If the numbers did not match. You also let them know
-    // else {
-    //   $("#result").text("Nope. Refresh the page to play again.");
-    //   lockGame = true;
-    // }
-    
-
+  
   });
 });
-
-
-// // Assignment Code
-// var generateBtn = document.querySelector("#generate");
-
-// // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-
-//   passwordText.value = password;
-
-// }
-
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
