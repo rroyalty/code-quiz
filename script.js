@@ -136,7 +136,6 @@ function gameOver() {
     } else {
         // Loops until there's an open slot for a high score or until i = 10.
         for (let i = 0; i < 10; i++) {
-
           // If Entry is Null, Push entry into array.
           if ( !highScores.entries[i] ) {
             let player1 = prompt("GAME OVER: Please input your name to record highscore:");
@@ -176,6 +175,7 @@ function gameOver() {
     // Local storage JSON object. Inserts new high score into high score array and stores.
     highScores['entries'].splice(10,1);
     localStorage.setItem("highScores", JSON.stringify(highScores));
+
     // Populate High Score.
     populateHS();
   }, 100);
