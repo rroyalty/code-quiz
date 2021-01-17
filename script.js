@@ -1,6 +1,8 @@
+
 $(document).ready(function() {
   // Initial Variables
-  let fluidQuestions = quizQuestions;
+  sessionStorage.setItem("questions", JSON.stringify(quizQuestions));
+  let fluidQuestions = JSON.parse(sessionStorage.getItem("questions"));
   let highScores = JSON.parse(localStorage.getItem("highScores"));
   let correctCount = 0;
   let incorrectCount = 0;
@@ -17,6 +19,7 @@ $(document).ready(function() {
 
   // BUTTON: Begins the game
   $(".btn-begin").on("click", function() {
+    randomizeButtons();
     // Sets initial time to 30 seconds.
     timerAdjust(30);
     // Initiates count down.
@@ -25,7 +28,6 @@ $(document).ready(function() {
     $("#stage1").attr("hidden", true);
     $("#stage2").attr("hidden", false);
     // Picks first question and randomizes answer order.
-    fluidQuestions = randomizeButtons(fluidQuestions);
   });
   // END BUTTON
 
@@ -46,10 +48,10 @@ $(document).ready(function() {
         incorrectCount++;
         timerAdjust(-5);
         };
+    // Pick next question randomly and randomize answer order.
+    randomizeButtons();
     //Delays for a moment to show correct/incorrect formatting.
     setTimeout(function(){
-      // Pick next question randomly and randomize answer order.
-      fluidQuestions = randomizeButtons(fluidQuestions);
       // Resets clicked button to original color.
       if (yourPick === 0) {
         $(_this).removeClass("correct");
@@ -94,8 +96,11 @@ $(document).ready(function() {
 
   // FUNCTION: Game over function. Hides quiz screen, shows Game Over screen, populates records score.
   function gameOver() {
+    $(".btn-choice").removeClass("correct");
+    $(".btn-choice").removeClass("incorrect");
     $("#stage2").attr("hidden", true);
     $("#stage1").attr("hidden", false);
+    sessionStorage.setItem("questions", JSON.stringify(quizQuestions));
     // If no highscore yet recorded, create a new JSON object and populate. timeOut present to allow JQuery to process before alert pops.
     setTimeout(function(){
       if(!highScores) {
@@ -112,7 +117,7 @@ $(document).ready(function() {
           for (let i = 0; i < 10; i++) {
             // If Entry is Null, Push entry into array.
             if ( !highScores.entries[i] ) {
-              let player1 = prompt("Please input your name to record highscore:");
+              let player1 = prompt("GAME OVER: Please input your name to record highscore:");
               if (player1 != null) {
                 highScores['entries'].push({"player":player1,"correct":correctCount,"incorrect":incorrectCount,"elapsed":timeElapsed});
               }
@@ -139,45 +144,49 @@ $(document).ready(function() {
                     i = 11;
                 }
               }
-          }
+          if (i === 10) alert("GAMEOVER: You did not qualify for a higherscore.")}
         }
-
+      // Local storage JSON object.
+      highScores['entries'].splice(10,1);
+      localStorage.setItem("highScores", JSON.stringify(highScores));
+      // Populate High Score.
+      populateHS();
+      location.reload;
     }, 100);
-    
-    // Local storage JSON object.
-    highScores['entries'].splice(11,1);
-    localStorage.setItem("highScores", JSON.stringify(highScores));
-    // Populate High Score.
-    populateHS();
   };
   // END FUNCTION
 
   // FUNCTION :An array of the unused questions is passed in to this function, which then selects a random question from that array,splices it out so it won't be seen again, and randomizes the order of the answers seen on screen
-  function randomizeButtons(questionsArr) {
+  function randomizeButtons() {
     // Function variables
-    let questionsLeft = questionsArr.questions.length;
-    let randomQNum =  Math.floor(Math.random() * questionsLeft);
-    let arrLoc = [0, 1, 2, 3];
-    let arrNum = [0, 1, 2, 3];
-    let buttonArray = [].slice.call ($(".btn-choice"));
-    let answerArray = [].slice.call ($(".answerChoice"));
-    // Randomizes the order of arrLoc in order to randomize the order of the buttons on the screen.
-    arrLoc.forEach(function(elem, i, arr) {
-      let Length = arrNum.length;
-      let rand = Math.floor(Math.random() * Length);
-      arr[i] = arrNum[(rand)];
-      arrNum.splice((rand), 1);
-    }, arrNum);
-    // 1. Sets the next question and removes the current Question from the array.
-    // 2. Sets the answers in a random order.
-    $("#quizQuestion").text(questionsArr.questions[randomQNum].question);
-    buttonArray.forEach(function(elem, i) {
-      $(elem).val(parseInt(arrLoc[i]));
-      $(answerArray[i]).text(questionsArr.questions[randomQNum].answers[arrLoc[i]]);
-    });
-    // Removes used questions from the question pool.
-    questionsArr.questions.splice(randomQNum, 1);
-    return questionsArr;
+    fluidQuestions = JSON.parse(sessionStorage.getItem("questions"));
+    let questionsLeft = fluidQuestions.questions.length;
+    if (questionsLeft === 0) {
+      gameover();
+    } else {
+        let randomQNum =  Math.floor(Math.random() * questionsLeft);
+        let arrLoc = [0, 1, 2, 3];
+        let arrNum = [0, 1, 2, 3];
+        let buttonArray = [].slice.call ($(".btn-choice"));
+        let answerArray = [].slice.call ($(".answerChoice"));
+        // Randomizes the order of arrLoc in order to randomize the order of the buttons on the screen.
+        arrLoc.forEach(function(elem, i, arr) {
+          let Length = arrNum.length;
+          let rand = Math.floor(Math.random() * Length);
+          arr[i] = arrNum[(rand)];
+          arrNum.splice((rand), 1);
+        }, arrNum);
+        // 1. Sets the next question and removes the current Question from the array.
+        // 2. Sets the answers in a random order.
+        $("#quizQuestion").text(fluidQuestions.questions[randomQNum].question);
+        buttonArray.forEach(function(elem, i) {
+          $(elem).val(parseInt(arrLoc[i]));
+          $(answerArray[i]).text(fluidQuestions.questions[randomQNum].answers[arrLoc[i]]);
+        });
+        // Removes used questions from the question pool.
+        fluidQuestions.questions.splice(randomQNum, 1);
+        sessionStorage.setItem("questions", JSON.stringify(fluidQuestions));
+      }
   };
   // END FUNCTION
 
