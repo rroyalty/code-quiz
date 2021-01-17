@@ -60,7 +60,8 @@ $(".btn-choice").on("click", function() {
       };
 
   // Pick next question randomly and randomize answer order.
-  randomizeButtons();
+  setTimeout(randomizeButtons(), 2000);
+
 
   //Delays for a moment to show correct/incorrect formatting.
   setTimeout(function(){
