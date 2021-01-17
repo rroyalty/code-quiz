@@ -3,12 +3,12 @@
 <html lang="en">
 
   <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Quiz Time!</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link rel="stylesheet" href="./style.css" />
   </head>
 
   <body>
@@ -32,8 +32,8 @@
       </div>
 
       <div class="row text-center">
-        <div class="col-3">
-          <h4>Player</h4>
+        <div class="col-6">
+          <p class="fw-bold">Player</p>
           <ul class="list-group">
             <li class="list-group-item playerList"></li>
             <li class="list-group-item playerList"></li>
@@ -48,8 +48,8 @@
           </ul>
         </div>
           
-        <div class="col-3">
-          <h4>Correct Guesses</h4>
+        <div class="col-2">
+          <p class="fw-bold">Correct</p>
           <ul class="list-group">
             <li class="list-group-item correctGuesses"></li>
             <li class="list-group-item correctGuesses"></li>
@@ -64,8 +64,8 @@
           </ul>
         </div>
           
-        <div class="col-3">
-          <h4>Incorrect Guesses</h4>
+        <div class="col-2">
+          <p class="fw-bold">Incorrect</p>
           <ul class="list-group">
             <li class="list-group-item incorrectGuesses"></li>
             <li class="list-group-item incorrectGuesses"></li>
@@ -80,8 +80,8 @@
           </ul>
         </div>
           
-        <div class="col-3">
-          <h4>Time Elapsed</h4>
+        <div class="col-2">
+          <p class="fw-bold">Sec. Elapsed</p>
           <ul class="list-group">
             <li class="list-group-item timeElapsed"></li>
             <li class="list-group-item timeElapsed"></li>
@@ -96,7 +96,7 @@
           </ul>
         </div>
       </div>
-
+      <hr>
       <div class="row">
         <div class="col-md-12">
           <div class="card mb-2">
@@ -110,7 +110,7 @@
   </div>
 
   <!--Stage 2-->
-  <div id="stage2" class="container-fluid">
+  <div id="stage2" class="container-fluid=" hidden="true">
     <br>
     <div class="row">
       <div class="col-md-12">
@@ -155,26 +155,6 @@
       </div>
     </div>
   </div>
-
-      <!--Stage 3-->
-      <div id="stage3" class="container-fluid">
-
-        <div class="jumbotron">
-          <br><br><br><br><br><br><br>
-          <h1 class="text-center">GAME OVER!</h1>
-        </div>
-
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card mb-2">
-              <button class="btn btn-secondary btn-again" value="5">
-                <h5 class="beginButtonText">Play again?</h5>
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </div>
 
     <!--Bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
