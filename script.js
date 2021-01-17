@@ -59,8 +59,10 @@ $(".btn-choice").on("click", function() {
       timerAdjust(-5);
       };
 
-  // Pick next question randomly and randomize answer order.
-  setTimeout(randomizeButtons(), 2000);
+  // Pick next question randomly and randomize answer order. TimeOut to delay transition for formatting.
+  setTimeout(function() {
+    randomizeButtons()
+  }, 100);
 
 
   //Delays for a moment to show correct/incorrect formatting.
@@ -101,7 +103,7 @@ function timerAdjust (adjustment) {
 
     // Updates game timer display. If time is <= 10 seconds, increase font and change color to red.
   } else {
-    $("#timer").text("Time Remaining: " + timer);
+    $("#timer").text(timer);
     if (parseInt(timer) <= 10) {
       $("#timer").addClass("timer-warning");
     } else {
@@ -170,7 +172,7 @@ function gameOver() {
             }
 
         // If no spot available, alert.
-        if (i === 9) alert("GAMEOVER: You did not qualify for a higherscore.")}
+        if (i === 9) alert("GAME OVER: You did not qualify for a higherscore.")}
       }
 
     // Local storage JSON object. Inserts new high score into high score array and stores.
