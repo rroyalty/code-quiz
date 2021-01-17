@@ -74,5 +74,35 @@ const quizQuestions =
             question: "Which tech entrepreneur named his son X Æ A-12?", 
             answers: ["Elon Musk", "Bill Gates", "Jeff Bezos", "Mark Zuckerberg"],
         },
+        {                
+            number: "15",  
+            question: "What is the highest-grossing film of all time without taking inflation into account?", 
+            answers: ["Avengers: Endgame", "Avatar", "Titanic", "Star Wars: The Force Awakens"],
+        },
+        {                
+            number: "16",  
+            question: "Which actor or actress is killed off in the opening scene of the movie Scream?", 
+            answers: ["Drew Barrymore", "Courtney Cox", "Neve Campbell", "Rose McGowan"],
+        },
+        {                
+            number: "17",  
+            question: "Which film did Steven Spielberg win his first Oscar for Best Director?", 
+            answers: ["Schindler's List", "Jaws", "E.T.", "Catch Me If You Can"],
+        },
+        {                
+            number: "18",  
+            question: "What is the name of Quint’s shark-hunting boat in Jaws?", 
+            answers: ["The Orca", "The Whale", "The Dolphin", "The Shark"],
+        },
+        {                
+            number: "19",  
+            question: "What was the first feature-length animated film ever released?", 
+            answers: ["Snow White", "Fantasia", "Pinocchio", "Dumbo"],
+        },
+        {                
+            number: "20",  
+            question: "What was the last movie Walt Disney was able to work on before he died?", 
+            answers: ["The Jungle Book", "101 Dalmations", "The Sword in the Stone", "Mary Poppins"],
+        },
     ]
 };
