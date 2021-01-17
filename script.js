@@ -19,6 +19,9 @@ $(document).ready(function() {
 
   // BUTTON: Begins the game
   $(".btn-begin").on("click", function() {
+    incorrectCount = 0;
+    timeElapsed = 0;
+    correctCount = 0;
     randomizeButtons();
     // Sets initial time to 30 seconds.
     timerAdjust(30);
@@ -96,6 +99,7 @@ $(document).ready(function() {
 
   // FUNCTION: Game over function. Hides quiz screen, shows Game Over screen, populates records score.
   function gameOver() {
+
     $(".btn-choice").removeClass("correct");
     $(".btn-choice").removeClass("incorrect");
     $("#stage2").attr("hidden", true);
