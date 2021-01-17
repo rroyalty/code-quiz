@@ -144,7 +144,7 @@ $(document).ready(function() {
                     i = 11;
                 }
               }
-          if (i === 10) alert("GAMEOVER: You did not qualify for a higherscore.")}
+          if (i === 9) alert("GAMEOVER: You did not qualify for a higherscore.")}
         }
       // Local storage JSON object.
       highScores['entries'].splice(10,1);
@@ -162,7 +162,7 @@ $(document).ready(function() {
     fluidQuestions = JSON.parse(sessionStorage.getItem("questions"));
     let questionsLeft = fluidQuestions.questions.length;
     if (questionsLeft === 0) {
-      gameover();
+      gameOver();
     } else {
         let randomQNum =  Math.floor(Math.random() * questionsLeft);
         let arrLoc = [0, 1, 2, 3];
