@@ -172,7 +172,7 @@ function gameOver() {
             }
 
         // If no spot available, alert.
-        if (i === 9) alert("GAME OVER: You did not qualify for a higherscore.")}
+        if (i === 9) alert("GAME OVER: You did not qualify for a high score.")}
       }
 
     // Local storage JSON object. Inserts new high score into high score array and stores.
