@@ -94,7 +94,7 @@ function timerAdjust (adjustment) {
   // Adds (or subtracts for negative parameters) time to timer.
   timer = timer + adjustment;
 
-  //Ends game and stops timer if time <= 0.
+  //Ends game if time <= 0.
   if (parseInt(timer) <= 0) {
     gameOver();
 
