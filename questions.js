@@ -104,5 +104,56 @@ const quizQuestions =
             question: "What was the last movie Walt Disney was able to work on before he died?", 
             answers: ["The Jungle Book", "101 Dalmations", "The Sword in the Stone", "Mary Poppins"],
         },
+        {                
+            number: "21",  
+            question: "In what month were all of Episodes 1 - 6 of Starwars released?", 
+            answers: ["May", "April", "June", "March"],
+        },
+        {                
+            number: "22",  
+            question: "How many languages does C-3PO say he is fluent in?", 
+            answers: ["Over 6 Million", "Over 5 Million", "Over 7 Million", "Over 8 Million"],
+        },
+        {                
+            number: "23",  
+            question: "What is Harry Potter's Patronus?", 
+            answers: ["A Stag", "A Horse", "An Elk", "A Bull"],
+        },
+        {                
+            number: "24",  
+            question: "What does Dumbledore give to Ron in his will?", 
+            answers: ["Deluminator", "Invisibility Cloak", "Magic Map", "A Talking Portrait"],
+        },
+        {                
+            number: "25",  
+            question: "What song is Phoebe from the show Friends most well known for?", 
+            answers: ["Smelly Cat", "Smelly Dog", "Stinky Cat", "Stinky Dog"],
+        },
+        {                
+            number: "26",  
+            question: "Which band sings the Friends Theme Song?", 
+            answers: ["The Rembrandts", "Great Buildings", "The Quick", "The Other Ones"],
+        },
+        {                
+            number: "27",  
+            question: "In Game of Thrones, which of the following is NOT the name of one of Daenery's Dragons?", 
+            answers: ["Aemon", "Drogon", "Viserion", "Rhaegal"],
+        },
+        {                
+            number: "28",  
+            question: "What MTV music show premiered in 1998?", 
+            answers: ["TRL", "Unplugged", "MTV News", "Celebrity Death Match"],
+        },
+        {                
+            number: "29",  
+            question: "What was the name of The Spice Girls' debut album in 1996?", 
+            answers: ["Spice", "Spiceworld", "Wannabe", "Forever"],
+        },
+        {                
+            number: "30",  
+            question: "What Nashville venue was Taylor Swift playing at when she was discovered?", 
+            answers: ["The Bluebird Cafe", "Mercy Lounge", "The Basement East", "12 & Porter"],
+        },
+
     ]
 };
