@@ -92,56 +92,58 @@ $(document).ready(function() {
   };
   // END FUNCTION
 
-  // FUNCTION: Game over function. Hides quiz screen, shows Game Over screen, records score.
+  // FUNCTION: Game over function. Hides quiz screen, shows Game Over screen, populates records score.
   function gameOver() {
     $("#stage2").attr("hidden", true);
     $("#stage1").attr("hidden", false);
-
-    // If no highscore yet recorded, create a new JSON object and populate.
-    if(!highScores) {
-      let player = prompt("Please input your name to record highscore:");
-      if (player != null) {
-        highScores = {entries: [{player: "",correct: "",incorrect: "",elapsed: ""}]};
-        highScores.entries[0].player = player;
-        highScores.entries[0].correct = correctCount;
-        highScores.entries[0].incorrect = incorrectCount;
-        highScores.entries[0].elapsed = timeElapsed;
-      }
-
-      // If highscore present, push new score into JSON object. Sorts by Correct Answers, then Incorrect Answers, then Time Elapsed.
-    } else {
-        for (let i = 0; i < 10; i++) {
-          // If Entry is Null, Push entry into array.
-          if ( !highScores.entries[i] ) {
-            let player1 = prompt("Please input your name to record highscore:");
-            if (player1 != null) {
-              highScores['entries'].push({"player":player1,"correct":correctCount,"incorrect":incorrectCount,"elapsed":timeElapsed});
-            }
-            i = 11;
-            // Sorts current entry into array based on Correct Answers, Incorrect Answers, and Seconds Elapsed.
-          } else {
-              // Variables parsed as Integers.
-              let wCorrect = parseInt(highScores.entries[i].correct);
-              let wIncorrect = parseInt(highScores.entries[i].incorrect);
-              let wElapsed = parseInt(highScores.entries[i].elapsed);
-              // Switch logic.
-              switch(true) {
-                case wCorrect > parseInt(correctCount):
-                  break;
-                case wCorrect === parseInt(correctCount) && wIncorrect < parseInt(incorrectCount):
-                  break;
-                case wCorrect === parseInt(correctCount) && wIncorrect === parseInt(incorrectCount) && wElapsed < parseInt(timeElapsed):
-                  break;
-                default:
-                  let player2 = prompt("Please input your name to record highscore:");
-                  if (player2 != null) {
-                    highScores['entries'].splice(i, 0, {"player":player2,"correct":correctCount,"incorrect":incorrectCount,"elapsed":timeElapsed});
-                  }
-                  i = 11;
-              }
-            }
+    // If no highscore yet recorded, create a new JSON object and populate. timeOut present to allow JQuery to process before alert pops.
+    setTimeout(function(){
+      if(!highScores) {
+        let player = prompt("GAME OVER: Please input your name to record highscore:");
+        if (player != null) {
+          highScores = {entries: [{player: "",correct: "",incorrect: "",elapsed: ""}]};
+          highScores.entries[0].player = player;
+          highScores.entries[0].correct = correctCount;
+          highScores.entries[0].incorrect = incorrectCount;
+          highScores.entries[0].elapsed = timeElapsed;
         }
-      }
+       // If highscore present, push new score into JSON object. Sorts by Correct Answers, then Incorrect Answers, then Time Elapsed.
+      } else {
+          for (let i = 0; i < 10; i++) {
+            // If Entry is Null, Push entry into array.
+            if ( !highScores.entries[i] ) {
+              let player1 = prompt("Please input your name to record highscore:");
+              if (player1 != null) {
+                highScores['entries'].push({"player":player1,"correct":correctCount,"incorrect":incorrectCount,"elapsed":timeElapsed});
+              }
+              i = 11;
+              // Sorts current entry into array based on Correct Answers, Incorrect Answers, and Seconds Elapsed.
+            } else {
+                // Variables parsed as Integers.
+                let wCorrect = parseInt(highScores.entries[i].correct);
+                let wIncorrect = parseInt(highScores.entries[i].incorrect);
+                let wElapsed = parseInt(highScores.entries[i].elapsed);
+                // Switch logic.
+                switch(true) {
+                  case wCorrect > parseInt(correctCount):
+                    break;
+                  case wCorrect === parseInt(correctCount) && wIncorrect < parseInt(incorrectCount):
+                    break;
+                  case wCorrect === parseInt(correctCount) && wIncorrect === parseInt(incorrectCount) && wElapsed < parseInt(timeElapsed):
+                    break;
+                  default:
+                    let player2 = prompt("GAME OVER: Please input your name to record highscore:");
+                    if (player2 != null) {
+                      highScores['entries'].splice(i, 0, {"player":player2,"correct":correctCount,"incorrect":incorrectCount,"elapsed":timeElapsed});
+                    }
+                    i = 11;
+                }
+              }
+          }
+        }
+
+    }, 100);
+    
     // Local storage JSON object.
     highScores['entries'].splice(11,1);
     localStorage.setItem("highScores", JSON.stringify(highScores));
