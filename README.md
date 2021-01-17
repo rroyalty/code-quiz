@@ -19,8 +19,8 @@ Below are the links associated with this project.
 
 ## Screenshots of Project
 
-![Opening Page:](https://github.com/rroyalty/code-quiz/blob/main/assets/example/04-web-apis-homework-demo.gif)
-![Quiz Questions Page:](https://github.com/rroyalty/code-quiz/blob/main/assets/example/04-web-apis-homework-demo.gif)  
+![Opening Page:](https://github.com/rroyalty/code-quiz/blob/main/assets/images/codeQuizOpeningScreen.jpg)
+![Quiz Questions Page:](https://github.com/rroyalty/code-quiz/blob/main/assets/images/codeQuizQuestionsScreen.jpg)  
 
 ## Credits
 
@@ -28,6 +28,8 @@ Bootcamp Teacher: ![ScottByers]https://github.com/switch120
 Bootcamp TA: ![Mike]https://michaelfearnley.com/  
 StackOverflow.com
 w3schools.com
+bootstrap
+JQuery
 
 ## Badges
 
