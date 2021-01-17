@@ -1,37 +1,33 @@
-## Welcome to GitHub Pages
+# code-Quiz
 
-You can use the [editor on GitHub](https://github.com/rroyalty/code-quiz/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+## Description 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+The following is the README for the project code-quiz, which is the repository created for the fourth homework assignment of the UNH Bootcamp course. For the assignment, I was tasked with creating a multiple choice quiz (about coding) that utilizes a countdown timer and local storage for high score results. Instead of making my questions about coding, I went with pop culture (since I still know more about that than coding. lol.)
 
-### Markdown
+![Example given:](https://github.com/rroyalty/H3-password-generator/blob/main/Assets/03-javascript-homework-demo.png)  
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+For this project, I opted to steer away from JavaScript alerts and prompts, and to instead build my validation straight into the HTML, CSS, and JavaScript. (Alerts and Prompts are ugly.)  
 
-```markdown
-Syntax highlighted code block
+Defaults upon HTML load for the password to be generated are 24 characters with all character sets selected. The slide bar for selecting password length is set to a range of 8 to 128 characters. Upon de-selecting every character set, the generate buttno becomes disable and warning HTML objects are made visible.
 
-# Header 1
-## Header 2
-### Header 3
+## Installation
 
-- Bulleted
-- List
+The project is a website; no installation necessary.  
 
-1. Numbered
-2. List
+## Usage 
 
-**Bold** and _Italic_ and `Code` text
+Below are the links associated with this project.  
 
-[Link](url) and ![Image](src)
-```
+![Website]https://rroyalty.github.io/H3-password-generator/  
+![Repository]https://github.com/rroyalty/H3-password-generator/  
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## Credits
 
-### Jekyll Themes
+Bootcamp Teacher: ![ScottByers]https://github.com/switch120  
+Bootcamp TA: ![Mike]https://michaelfearnley.com/  
+StackOverflow.com
+w3schools.com
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/rroyalty/code-quiz/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## Badges
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+![Ryan](https://img.shields.io/badge/Ryan's%20Badge-Hello-green)
