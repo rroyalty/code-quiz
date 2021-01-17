@@ -14,6 +14,7 @@ $(document).ready(function() {
 
   // Populates high scores.
   populateHS();
+  
 // END INITIALIZE.
 // ----------------------------------------------------------------------------------
 // BUTTON: Begins the game
